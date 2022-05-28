@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        supportActionBar?.hide()
+
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -27,10 +29,10 @@ class MainActivity : AppCompatActivity() {
     class MyAdapter(activity : AppCompatActivity) : FragmentStateAdapter(activity) {
 
         private val list = arrayListOf(
-            FirstFragment.newInstance(0, R.drawable.ic_home),
-            FirstFragment.newInstance(1, R.drawable.ic_account),
-            FirstFragment.newInstance(2, R.drawable.ic_list),
-            FirstFragment.newInstance(3, com.google.android.material.R.drawable.ic_clock_black_24dp)
+            FirstFragment.newInstance(0),
+            FirstFragment.newInstance(1),
+            FirstFragment.newInstance(2),
+            FirstFragment.newInstance(3)
         )
 
         override fun getItemCount(): Int = 4
@@ -38,20 +40,4 @@ class MainActivity : AppCompatActivity() {
         override fun createFragment(pos: Int) = list[pos]
 
     }
-/*        binding.bottomNavigationView.setOnItemReselectedListener {
-            when (it.itemId) {
-                R.id.item_home -> FirstFragment.newInstance("Home")
-                R.id.item_list -> FirstFragment.newInstance("List")
-                R.id.item_acc -> FirstFragment.newInstance("Account")
-            }
-            true
-        }
-        binding.bottomNavigationView.selectedItemId = R.id.item_home
-    }
-
-    private fun setCurrentFragment (string: String) {
-        supportFragmentManager.commit {
-            replace(R.id.fragmentContainerView, FirstFragment.newInstance(string))
-        }
-    }*/
 }
